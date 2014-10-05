@@ -13,6 +13,12 @@ module Venmo
       self.class.get("/oauth/authorize", {client_id: 2016, scope: "make_payments"})
     end
 
+    def pay
+      p @key
+      p $key
+      self.class.post("/payments", {access_token:$key, email: "myeung58@gmail.com",note: "uberquick payment", amount: 0.01})
+    end
+
     def me
       self.class.get("/me?access_token=#{@key}")
     end

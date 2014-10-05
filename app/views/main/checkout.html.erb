@@ -1,0 +1,3 @@
+<%= "estimated price: #{@price['prices'][0]['low_estimate'].to_i * @price['prices'][0]['surge_multiplier'].to_f}" %>
+
+<%= link_to 'confirm purchase', venmo_signin_path %>
