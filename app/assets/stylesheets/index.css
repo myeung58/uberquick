@@ -41,18 +41,27 @@ h6 {
     font-weight: 700;
 }
 
+body {
+background-image: url('http://www.iskin.co.uk/wallpapers/styles/1680x1050/public/san_francisco_skyline699.jpg');
+}
 .lead {
     font-size: 18px;
     font-weight: 400;
 }
 
 .intro-header {
+  height: 100%;
     padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
     padding-bottom: 50px;
     text-align: center;
-    color: #f8f8f8;
+    color: orange;
     background: url(../img/intro-bg.jpg) no-repeat center center;
     background-size: cover;
+}
+
+.intro-header:hover {
+  color: orange;
+  transition: color 1s;
 }
 
 .intro-message {
@@ -64,7 +73,7 @@ h6 {
 .intro-message > h1 {
     margin: 0;
     text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-    font-size: 5em;
+    font-size: 4em;
 }
 
 .intro-divider {
@@ -109,8 +118,14 @@ h6 {
 }
 
 .content-section-a {
-    padding: 50px 0;
-    background-color: #f8f8f8;
+    height: 100%;
+    padding: 50px;
+    background-color: #fdba31;
+}
+
+.content-1 {
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .content-section-b {
@@ -183,4 +198,13 @@ footer {
 
 p.copyright {
     margin: 15px 0 0;
+}
+
+a:hover {
+  color: orange;
+  transition: color 0.5s;
+}
+
+.navbar {
+  background-color: orange;
 }
