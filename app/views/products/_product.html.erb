@@ -1,0 +1,10 @@
+<div class="<%=product.name%>">
+  <%= product.name %>
+  <%= product.price %>
+</div>
+
+<div class="product-container">
+  <% @products.each do |product| %>
+    <%= render partial: 'product', :locals => {:product => product} %>
+  <% end %>
+</div>
