@@ -16,7 +16,7 @@ module Venmo
     def pay
       p @key
       p $key
-      self.class.post("/payments", {access_token:$key, email: "myeung58@gmail.com",note: "uberquick payment", amount: 0.01})
+      self.class.post("/payments", {access_token:$key, email: "soonerboy14@sbcglobal.net",note: "uberquick payment", amount: "0.01"})
     end
 
     def me

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post '/api/v1/checkout/:args' => 'main#receive'
 
   get '/checkout' => 'main#checkout'
+  get '/receipt' => 'main#receipt'
 end
 
 

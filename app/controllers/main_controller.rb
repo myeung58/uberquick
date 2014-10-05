@@ -27,6 +27,7 @@ class MainController < ApplicationController
   end
 
   def store_venmo_key
+    p params
     $key = params[:access_token]
     redirect_to '/make_payment'
   end
@@ -41,7 +42,7 @@ class MainController < ApplicationController
     # @page = venmo.me
     # puts venmo.me
     # render partial: "page"
-    render nothing: true
+    redirect_to '/receipt'
   end
 
   def checkout
@@ -49,6 +50,10 @@ class MainController < ApplicationController
 
     # render uber info
     @price = $price_info
+  end
+
+  def receipt
+
   end
 end
 
