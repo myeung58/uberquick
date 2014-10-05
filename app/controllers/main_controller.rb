@@ -1,7 +1,7 @@
 class MainController < ApplicationController
 
   def index
-    render nothing: true
+    # render nothing: true
   end
 
   def receive
