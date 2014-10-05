@@ -4,8 +4,12 @@ class MainController < ApplicationController
     # render nothing: true
   end
 
+  def demopage
+  end
+
   def receive
     p params
+    $items = params['items']
     google = Google::Client.new()
 
     $store_location = google.get_latlong('2332 Fulton St, San Francisco, Ca')['results'][0]['geometry']['location']
@@ -49,6 +53,7 @@ class MainController < ApplicationController
   def checkout
     @store_address = '2332 Fulton St, San Francisco, Ca'
     @destination = '225 Bush St, San Francisco, Ca'
+    @items = $items
     # render order info
 
     # render uber info

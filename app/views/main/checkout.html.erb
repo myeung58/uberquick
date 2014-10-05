@@ -1,4 +1,52 @@
 
-<%= "estimated price: #{@price['prices'][0]['low_estimate'].to_i * @price['prices'][0]['surge_multiplier'].to_f}" %>
 
-<%= link_to 'confirm purchase', venmo_signin_path %>
+
+
+<div class="container-fluid">
+<div class="col-md-6" >
+<h1 class="page-header">Checkout</h1>
+    <!-- <p>Your estimate for the uber driver to deliver your goods is: <%= %></p> -->
+    <% car_total =  @price['prices'][0]['low_estimate'].to_i * @price['prices'][0]['surge_multiplier'].to_f %>
+    <% item_total = 86.97 %>
+    <p>Total amount for goods: <%= item_total %></p>
+    <p>Same-hour delivery: $<%= car_total %></p>
+    <p>Grand Total: $<%= car_total + item_total%></p>
+    <!-- <form name="input" action="demo_form_action.asp" method="get"> -->
+<!-- <p>Where do you want the driver to deliver to?</p>
+<div class="form-group">
+<form class="form-inline" role="form">
+        <div class="form-group">
+          <label for="email">Name:</label>
+          <input type="email" class="form-control" id="email" placeholder="Name of person accepting items upon dropoff">
+        </div>
+        <div class="form-group">
+          <label for="pwd">Address:</label>
+          <input type="password" class="form-control" id="pwd" placeholder="Address of Dropoff Location">
+        </div>
+        <div class="form-group">
+          <label for="pwd">Phone:</label>
+          <input type="password" class="form-control" id="pwd" placeholder="Phone number for driver to call when he gets close:">
+        </div>
+        <div class="checkbox">
+          <label><input type="checkbox"> Remember me</label>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form> -->
+      <h3>Origin: <%= @store_address %></h3>
+      <h3>Destination: <%= @destination %></h3>
+<br>
+<br>
+
+<script>
+function myFunction() {
+    document.getElementById("addressForm").submit();
+}
+</script>
+
+<br>
+    <!-- <button type='submit' class="btn btn-primary">Checkout with Venmo</button> -->
+    <a class="uxlink" href="/venmo_signin">Venmo secure checkout</a>
+    </div>
+    <div class="col-md-6">
+
+</div>

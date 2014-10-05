@@ -1,0 +1,113 @@
+<div id="wrap">
+  <div id="main" class="container clear-top">
+
+    <!-- Brand and toggle get grouped for better mobile display -->
+<div class="jumbotron">
+    <div class="container" style="height 300px">
+<!--       <a class="store-logo" href="http://tinypic.com?ref=987xoi" target="_blank"><img src="http://i58.tinypic.com/987xoi.gif" border="0" alt="Image and video hosting by TinyPic"></a> -->
+
+        <h1 style="text-align: center">Simple Store</h1>
+        <p style="text-align: center">We offer same hour delivery. Can you believe that?</p>
+    </div>
+</div>
+
+  <div id="left_cart" class="col-md-6">
+    <ul class="list-group">
+        <li class="list-group-item">
+        <span class="badge">x3</span>
+        <span class="badge">$24.99</span>
+        <strong>New Belgium Folly Pack </strong><br>
+        <img src="http://www.ajaxturner.com/wp-content/uploads/2014/03/Fat_Tire_6_Pack-e1395346237486.jpg" width="200px" height="200px" />
+  </li>
+    <li class="list-group-item">
+        <span class="badge">x1</span>
+        <span class="badge">$12</span>
+        <strong>Digiorno Pizza</strong> <br>
+        <img src="http://www.arizonafoothillsmagazine.com/taste/wp-content/uploads/digiorno.jpg" width="200px" height="200px" />
+
+    </li>
+</ul>
+  </div>
+
+    <div id = "right_total" class="col-md-6">
+    <ul class="list-group">
+
+        <li class="list-group-item">
+    Total: $86.97
+        </li>
+        <div id="uberButton">
+
+        </div>
+</ul>
+  </div>
+
+  </div>
+</div>
+ <script>
+  var UberQuick = (function() {
+  var $button;
+  var self = this;
+
+  createButton = function(obj) {
+    var buttonText = obj.button_text;
+    var location = obj.store_location;
+    var base_url = obj.base_url;
+    var price = ""; var quantity = ""; var name = "";
+    for (var i = 0; i < obj.items.length; i++) {
+      name += "&name=" + obj.items[i].item_name;
+      price += "&price=" + obj.items[i].price;
+      quantity += "&quantity=" + obj.items[i].quantity;
+    }
+    var buttonURL = base_url + "/checkout/location=" + location + name + price + quantity;
+    var buttonText = "<button action='" + buttonURL + "' class='uberquick-checkout btn btn-primary'>" + buttonText + "</button>";
+    return buttonText;
+  };
+// {##added "checkout" to make uberquick checkout a key value pair#}
+  sendRequest = function() {
+    var data = {items:[{item_name: "fat tire", price: "24.99", quantity: 3}, {item_name: "pizza", price: "12", quantity: 1}]}
+    var request = $.ajax({
+        url: '/api/v1/receive',
+        type: "POST",
+        dataType: "jsonp",
+        data: data});
+    request.done(function() {
+        window.location.href = '/get_uber_price'
+      console.log("success");
+    });
+    request.fail(function() {
+      console.log("fail");
+      window.location.href = '/get_uber_price'
+    })
+  };
+
+  return {
+    // {base_url: str, button_text: str, store_location: str, items: [{item_name: str, price: int, quantity: int},{item_name: str, price: int, quantity: int}]}
+    loadTransaction: function(obj) {
+      $button = $(createButton(obj));
+    },
+    getButton: function() {
+      return $button;
+    },
+    bindEvent: function() {
+      $('body').on("click", '.uberquick-checkout', function(e) {
+        e.preventDefault();
+        sendRequest();
+      })
+    }
+  }
+})();
+UberQuick.loadTransaction({base_url: '/api/v1/receive', button_text: 'uberquick checkout!',items:[{item_name: "fat tire", price: "24.99", quantity: 3}, {item_name: "pizza", price: "12", quantity: 1}]});
+UberQuick.getButton();
+UberQuick.bindEvent();
+$('#uberButton').append(UberQuick.getButton());
+
+</script>
+
+<footer class="footer">
+    <div class="panel panel-default" style="width: 50%; margin: 0 auto">
+        <div class="panel-body" style="text-align: center">
+            <p>Checkout powered by</p><p id="fancy_header" class="more_fancy">uberQuick</p>
+            <p style="float:right">The speed of Amazon, the friendliness of a neighbor</p>
+        </div>
+    </div>
+</footer>

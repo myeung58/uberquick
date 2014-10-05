@@ -1,0 +1,18 @@
+.navbar-brand {
+    text-align: center;
+}
+
+
+#fancy_header {
+    font-family: 'Lobster', cursive;
+}
+
+.more_fancy {
+    font-size: 40px;
+    color: orangered;
+}
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
