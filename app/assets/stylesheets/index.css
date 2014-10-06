@@ -269,6 +269,9 @@ a:hover {
 }
 
 .uxlink {
+  border: solid;
+  border-radius: 5px;
+  font-size: 30px;
   color: grey;
 }
 
@@ -281,4 +284,8 @@ a:hover {
 .store-logo {
   height: 50px;
   width: 50px;
+}
+
+.caption {
+  color: grey;
 }
